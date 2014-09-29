@@ -26,7 +26,7 @@ In your project's Gruntfile, add a section named `watchalive` to the data object
 grunt.initConfig({
   watchalive: {
     options: {
-      // Task-specific options go here.
+      useGlobal: true
     },
     your_target: {
       // Target-specific file lists and/or options go here.
