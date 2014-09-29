@@ -25,6 +25,7 @@ module.exports = function(grunt) {
             options = this.options()
 
         if (!watchalive || options.useGlobal) {
+            console.log('Using global watchalive module.')
             var tmpDir = require('os').tmpdir()
 
             var salt = (Math.random()*10).toFixed(),
