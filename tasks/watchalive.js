@@ -17,19 +17,30 @@ try {
 }
 
 
-
-
 module.exports = function(grunt) {
 
     grunt.registerMultiTask('watchalive', 'Watchalive sever grunt plugin', function() {
-        // Merge task-specific and/or target-specific options with these defaults.
-        var done = this.async();
 
-        if (watchalive) {
-            watchalive(this.options())
+        var done = this.async(),
+            options = this.options()
+
+        if (!watchalive || options.useGlobal) {
+            var tmpDir = require('os').tmpdir()
+
+            var salt = (Math.random()*10).toFixed(),
+                configFile = require('path').resolve(tmpDir, 'watchem' + salt + '.json')
+            require('fs').writeFileSync(configFile, JSON.stringify(this.options()))
+
+            // TODO: clean up temp config file? Don't know how.
+            var child = grunt.util.spawn({
+                cmd: 'watchalive',
+                args: [configFile]
+            }, done)
+
+            child.stdout.pipe(process.stdout);
+            child.stderr.pipe(process.stderr);
         } else {
-            // TODO: use global module
-            done()
+            watchalive(options)
         }
 
     });
