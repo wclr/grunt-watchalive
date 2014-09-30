@@ -1,7 +1,7 @@
 {
   "name": "grunt-watchalive",
   "description": "Watchalive sever grunt plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/whitecolor/grunt-watchalive",
   "author": {
     "name": "Whitecolor",
