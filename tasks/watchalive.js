@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             try {
                 watchalive = require('watchalive')
             } catch (e){
-                console.log('Could not find local watchalive')
+                console.log('Could not find local watchalive.')
             }
         }
 
