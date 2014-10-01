@@ -8,21 +8,22 @@
 
 'use strict';
 
-var watchalive
-
-try {
-    watchalive = require('watchalive')
-} catch (e){
-    console.log('Could not find local watchalive')
-}
-
 
 module.exports = function(grunt) {
 
     grunt.registerMultiTask('watchalive', 'Watchalive sever grunt plugin', function() {
 
-        var done = this.async(),
+        var watchalive,
+            done = this.async(),
             options = this.options()
+
+        if (!options.useGlobalK){
+            try {
+                watchalive = require('watchalive')
+            } catch (e){
+                console.log('Could not find local watchalive')
+            }
+        }
 
         if (!watchalive || options.useGlobal) {
             console.log('Using global watchalive module.')
