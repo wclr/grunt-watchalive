@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             done = this.async(),
             options = this.options()
 
-        if (!options.useGlobalK){
+        if (!options.useGlobal){
             try {
                 watchalive = require('watchalive')
             } catch (e){
