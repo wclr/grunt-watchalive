@@ -39,6 +39,7 @@ module.exports = function(grunt) {
                 args: [configFile]
             }, done)
 
+            process.stdin.pipe(child.stdin);
             child.stdout.pipe(process.stdout);
             child.stderr.pipe(process.stderr);
         } else {
